@@ -1,0 +1,169 @@
+.player h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    cursor: default;
+}
+
+.player h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 8pt;
+    font-weight: 400;
+    cursor: default;
+}
+
+.player {
+    height: 150px;
+    width: 100%;
+    background-color: #1E2125;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.player ul {
+    list-style: none;
+}
+.player ul li {
+    display: block;
+    margin-right: 40px;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.cover img {
+    max-height: 150px;
+    width: 150px;
+}
+
+.info h1 {
+    margin-left: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.info h4 {
+    margin-left: 150px;
+    margin-top: 10px;
+    color: #636367;
+}
+
+.button-items {
+    margin-left: 150px;
+}
+
+#slider {
+    height: 4px;
+    background: #151518;
+    border-radius: 2px;
+}
+#slider div {
+    width: 4px;
+    height: 4px;
+    margin-top: 1px;
+    background: #EF6DBC;
+    border-radius: 2px;
+}
+
+.player .timer {
+    color: #494B4E;
+    font-size: 9pt;
+    float: right;
+    font-family: Arial, Sans-Serif;
+}
+
+.controls {
+    margin-top: 20px;
+}
+.controls svg:nth-child(2) {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.play .play-button {
+    padding: 0 3px;
+    width: 30px;
+    height: 30px;
+    x: 0px;
+    y: 0px;
+    enable-background: new 0 0 25 25;
+}
+svg.sb-soundplayer-icon {
+    width: 1em;
+    height: 1em;
+    position: relative;
+    vertical-align: middle;
+}
+.play .play-button g {
+    stroke: #FEFEFE;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+}
+.play .play-button g path {
+    fill: #FEFEFE;
+}
+
+.play .play-button:hover {
+    cursor: pointer;
+}
+.play .play-button:hover g {
+    stroke: #8F4DA9;
+    cursor: pointer;
+}
+.play .play-button:hover g path {
+    fill: #9b59b6;
+    cursor: pointer;
+}
+
+.step-backward {
+    width: 18px;
+    height: 18px;
+    x: 0px;
+    y: 0px;
+    enable-background: new 0 0 25 25;
+    margin-bottom: 5px;
+}
+.step-backward g polygon {
+    fill: #FEFEFE;
+}
+
+.step-foreward {
+    width: 18px;
+    height: 18px;
+    x: 0px;
+    y: 0px;
+    enable-background: new 0 0 25 25;
+    margin-bottom: 5px;
+}
+.step-foreward g polygon {
+    fill: #FEFEFE;
+}
+
+#pause {
+    x: 0px;
+    y: 0px;
+    enable-background: new 0 0 25 25;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: -38px;
+    cursor: pointer;
+}
+#pause rect {
+    fill: white;
+}
+
+#pause:hover rect {
+    fill: #8F4DA9;
+}
+
+.step-backward g polygon:hover, .step-foreward g polygon:hover {
+    fill: #EF6DBC;
+    cursor: pointer;
+}
