@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js",
+    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js --port 8081",
     "build": "webpack --progress  --config ./webpack.config.js -p",
     "test": "echo \"No test specified\" && exit 0"
   },
