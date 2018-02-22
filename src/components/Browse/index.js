@@ -5,12 +5,15 @@ import * as actions from '../../actions'
 import Browse from './presenter';
 
 const mapStateToProps = (state) => {
+  const {featuredPlaylists} = state.browse
   return {
+    featuredPlaylists
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onFetchFeaturedPlaylists: bindActionCreators(actions.onFetchFeaturedPlaylists, dispatch),
   }
 }
 

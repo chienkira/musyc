@@ -1,5 +1,5 @@
-import {setTracks} from '../actions/track'
 import * as actionTypes from '../constants/actionTypes'
+import * as actions from './index'
 
 export function auth() {
 
@@ -12,7 +12,6 @@ export function auth() {
 
   return function (dispatch) {
     dispatch(fetchMe(window.spotifyApi))
-    dispatch(fetchStream(window.spotifyApi))
   }
   
   function fetchMe(spotifyApi) {
@@ -20,20 +19,10 @@ export function auth() {
       spotifyApi.getMe()
         .then(function (data) {
           dispatch(setMe(data.body))
+          dispatch(actions.switchMenu('yourTracks'))
         }, function (err) {
           console.error(err)
         })
-    }
-  }
-  
-  function fetchStream(spotifyApi) {
-    return function (dispatch) {
-      spotifyApi.getMySavedTracks()
-        .then(function(data) {
-          dispatch(setTracks(data.body.items))
-        }, function(err) {
-          console.error(err);
-        });
     }
   }
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container } from 'semantic-ui-react'
+import { Container, Loader, Dimmer } from 'semantic-ui-react'
 import Menubar from '../Menubar'
+import Intro from '../Intro'
 import Browse from '../Browse'
 import TrackList from '../TrackList'
 import Player from '../Player'
@@ -10,14 +11,14 @@ import Library from '../Library'
 class App extends Component {
 
   render() {
-    const { activeMenu } = this.props
+    const { activeMenu, isFetching } = this.props
     return (
       <div>
         {/*Top menu bar*/}
         <Menubar/>
 
         {/*Main container*/}
-        <Container className="main-container">
+        <Container className="main-container" style={{marginBottom: '170px'}}>
           {
             (() => {
               switch (activeMenu) {
@@ -27,9 +28,12 @@ class App extends Component {
                   return <TrackList/>;
                 case 'library':
                   return <Library/>;
+                default:
+                  return <Intro/>
               }
             })()
           }
+          {isFetching ? <Loader active>Loading</Loader>: null}
         </Container>
 
         {/*Bottom player*/}
@@ -41,8 +45,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   const { activeMenu } = state.menu
+  const { isFetching } = state.api
   return {
-    activeMenu
+    activeMenu,
+    isFetching
   }
 }
 

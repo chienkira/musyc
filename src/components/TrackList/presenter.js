@@ -3,6 +3,10 @@ import {List, Button, Image} from 'semantic-ui-react';
 
 class TrackList extends React.Component {
 
+  componentDidMount() {
+    this.props.onFetchMyTracks()
+  }
+
   render() {
     const {tracks = [], onPlay} = this.props;
     return (

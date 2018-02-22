@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onFetchMyTracks: bindActionCreators(actions.fetchMyTracks, dispatch),
     onPlay: bindActionCreators(actions.playTrack, dispatch)
   }
 }
