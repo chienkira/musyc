@@ -13,3 +13,17 @@ export function playTrack(track) {
     track
   }
 }
+
+export function nextTrack(track) {
+  return {
+    type: actionTypes.TRACK_NEXT,
+    track
+  }
+}
+
+export function prevTrack(track) {
+  return {
+    type: actionTypes.TRACK_PREV,
+    track
+  }
+}

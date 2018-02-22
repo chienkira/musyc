@@ -6,12 +6,14 @@ import {Menu, Icon, Dropdown, Button, Flag, Image} from 'semantic-ui-react'
 class Menubar extends Component {
 
   openAuthWindow(onAuth) {
-    let authorizeUrl = window.spotifyApi.createAuthorizeURL(SCOPES, STATE) // 3rd param: set true to force open Spotify auth screen
+    // 3rd param: set true to force open Spotify auth screen
+    let authorizeUrl = window.spotifyApi.createAuthorizeURL(SCOPES, STATE, false)
+    // overwrite the response_type's value to 'token', because we are doing "Implicit Grant Authorization Flows"
     authorizeUrl = authorizeUrl.replace(/response_type=code/gi, 'response_type=token')
 
     // register auth dispatch function to window so authorize child window can call it after
     window.onAuth = onAuth
-    Util.popupCenter(authorizeUrl, 'Musyc', 400, 600)
+    Util.popupCenter(authorizeUrl, 'Musyc - Spotify authorization', 400, 600)
   }
 
   isLoggedIn(user) {
@@ -26,7 +28,7 @@ class Menubar extends Component {
       <Image avatar src={user.images[0].url} />
     )
     return (
-      <Button name="userbutton" labeled="true" color='teal'>
+      <Button name="userButton" labeled="true" color='teal'>
         <Dropdown trigger={userDropdownTrigger}>
           <Dropdown.Menu>
             <Dropdown.Item key="user" disabled><span>Signed in as <strong>{user.display_name}</strong></span></Dropdown.Item>
@@ -51,17 +53,17 @@ class Menubar extends Component {
         </Menu.Item>
 
         <Menu.Item name="browse" icon="feed"
-                   disabled={this.isLoggedIn(user) ? false : true}
+                   disabled={!this.isLoggedIn(user)}
                    active={activeMenu === "browse"}
                    onClick={(e, {name}) => onSwitchMenu(name)}/>
 
         <Menu.Item name="yourTracks" icon="music"
-                   disabled={this.isLoggedIn(user) ? false : true}
+                   disabled={!this.isLoggedIn(user)}
                    active={activeMenu === "yourTracks"}
                    onClick={(e, {name}) => onSwitchMenu(name)}/>
 
         <Menu.Item name="library" icon="like"
-                   disabled={this.isLoggedIn(user) ? false : true}
+                   disabled={!this.isLoggedIn(user)}
                    active={activeMenu === "library"}
                    onClick={(e, {name}) => onSwitchMenu(name)}/>
 

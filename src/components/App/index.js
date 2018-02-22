@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Sticky } from 'semantic-ui-react'
-
+import { Container } from 'semantic-ui-react'
 import Menubar from '../Menubar'
 import Browse from '../Browse'
 import TrackList from '../TrackList'
@@ -33,7 +32,7 @@ class App extends Component {
           }
         </Container>
 
-        {/*The player*/}
+        {/*Bottom player*/}
         <Player/>
       </div>
     )

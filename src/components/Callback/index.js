@@ -3,20 +3,19 @@ import QueryString from 'query-string'
 
 class Callback extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this._handleAuthCallback = this.handleAuthCallback(this.props.dispatch);
-  }
-
   componentDidMount() {
-    window.setTimeout(this._handleAuthCallback, 1)
+    window.setTimeout(this.handleAuthCallback, 1)
   }
 
   render() {
-    return <div><p>From Musyc: This page should close soon...</p></div>
+    return (
+      <div>
+        <p>From Musyc: This page should close soon...</p>
+      </div>
+    )
   }
 
-  handleAuthCallback(dispatch) {
+  handleAuthCallback() {
     const queryString = QueryString.parse(location.hash)
 
     if (queryString.error) {

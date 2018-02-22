@@ -13,6 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onNextTrack: bindActionCreators(actions.nextTrack , dispatch),
+    onPrevTrack: bindActionCreators(actions.prevTrack , dispatch)
   }
 }
 

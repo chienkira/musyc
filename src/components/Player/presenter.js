@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import { Button, Icon, Menu, Image, Transition } from 'semantic-ui-react';
 import { PlayButton, Timer, VolumeControl, Progress } from 'react-soundplayer/components';
 import { withCustomAudio } from 'react-soundplayer/addons';
@@ -7,23 +6,48 @@ import './Player.css'
 
 class Player extends React.Component {
 
+  constructor(props, context) {
+    super(props, context)
+  }
+
   componentDidUpdate() {
-    const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-    if (!audioElement) {
-      return;
+    const {activeTrack, onNextTrack} = this.props
+    // if active track has no stream url, go to the next one
+    if(activeTrack && !activeTrack.track.preview_url) {
+      onNextTrack(activeTrack)
     }
 
-    const {activeTrack} = this.props;
+    // force auto-play
+    const event = new MouseEvent('click', {
+      'view': window,
+      'bubbles': true,
+      'cancelable': false
+    })
+    document.getElementsByClassName("play-button")[0].dispatchEvent(event)
+  }
 
-    if (activeTrack) {
-      audioElement.play();
-    } else {
-      audioElement.pause();
-    }
+  onStartTrack(soundCloudAudio) {
+    const playhead = document.getElementById("elapsed")
+    const timeline = document.getElementById("slider")
+    soundCloudAudio.progressInterval = setInterval(() => {
+      const timelineWidth = timeline.offsetWidth
+      const playPercent = timelineWidth * (soundCloudAudio.audio.currentTime / soundCloudAudio.audio.duration)
+      playhead.style.width = playPercent + "px"
+    }, 100);
+  }
+
+  onStopTrack(soundCloudAudio) {
+    soundCloudAudio.progressInterval && clearInterval(soundCloudAudio.progressInterval)
+    const playhead = document.getElementById("elapsed")
+    playhead.style.width = 1 + "px"
+  }
+
+  onPauseTrack(soundCloudAudio) {
+    soundCloudAudio.progressInterval && clearInterval(soundCloudAudio.progressInterval)
   }
 
   render() {
-    const {activeTrack} = this.props
+    const {activeTrack, onNextTrack, onPrevTrack} = this.props
 
     const EnhancedPlayer = withCustomAudio(props => {
       const {track, trackTitle, artistName, trackDuration} = props
@@ -38,33 +62,36 @@ class Player extends React.Component {
             </li>
             <li className="info">
               <h1 className="h5 nowrap caps flex-auto m0">
-                {trackTitle ? trackTitle : '----------------------------'}
+                {trackTitle ? trackTitle : '┏●----------------------------●┓'}
               </h1>
               <h4 className="h5 nowrap caps flex-auto m0">
-                {artistName ? artistName : '---------------'}
+                {artistName ? artistName : '-----(｀・ω・´)-----'}
               </h4>
 
               <div className="button-items">
+
                 <div id="slider">
                   <div id="elapsed"></div>
                 </div>
+
                 <Timer
                   className="timer"
                   duration={trackDuration ? trackDuration / 1000 : 0}
                   {...props} />
+
                 <div className="controls">
-                  <Button icon circular>
+                  <Button icon={true} circular onClick={() => {onPrevTrack(activeTrack)}}>
                     <Icon name='step backward' />
                   </Button>
                   <PlayButton
+                    id="playButton"
                     className="ui circular icon button play-button"
-                    {...props} >
-                    <Icon name='play' />
-                  </PlayButton>
-                  <Button icon circular>
+                    {...props}/>
+                  <Button icon={true} circular onClick={() => {onNextTrack(activeTrack)}}>
                     <Icon name='step forward' />
                   </Button>
                 </div>
+
               </div>
             </li>
           </ul>
@@ -80,6 +107,10 @@ class Player extends React.Component {
           trackTitle={activeTrack ? activeTrack.track.name : ''}
           artistName={activeTrack ? activeTrack.track.artists[0].name : ''}
           trackDuration={activeTrack ? activeTrack.track.duration_ms : ''}
+          onStartTrack={this.onStartTrack}
+          onStopTrack={this.onStopTrack}
+          onPauseTrack={this.onPauseTrack}
+          onReady={this.onReady}
           preloadType="metadata" />
       </Menu>
     )
