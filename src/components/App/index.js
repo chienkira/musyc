@@ -4,7 +4,7 @@ import { Container, Loader, Dimmer } from 'semantic-ui-react'
 import Menubar from '../Menubar'
 import Intro from '../Intro'
 import Browse from '../Browse'
-import TrackList from '../TrackList'
+import MyTracks from '../MyTracks'
 import Player from '../Player'
 import Library from '../Library'
 
@@ -17,6 +17,8 @@ class App extends Component {
         {/*Top menu bar*/}
         <Menubar/>
 
+        {isFetching ? <Dimmer active inverted><Loader inverted size='large'>Loading</Loader></Dimmer>: null}
+
         {/*Main container*/}
         <Container className="main-container" style={{marginBottom: '170px'}}>
           {
@@ -24,8 +26,8 @@ class App extends Component {
               switch (activeMenu) {
                 case 'browse':
                   return <Browse/>;
-                case 'yourTracks':
-                  return <TrackList/>;
+                case 'myTracks':
+                  return <MyTracks/>;
                 case 'library':
                   return <Library/>;
                 default:
@@ -33,7 +35,6 @@ class App extends Component {
               }
             })()
           }
-          {isFetching ? <Loader active>Loading</Loader>: null}
         </Container>
 
         {/*Bottom player*/}

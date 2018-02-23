@@ -2,7 +2,8 @@ import * as actionTypes from '../constants/actionTypes'
 
 const initialState = {
   activeMenu: '' ,
-  user: null
+  user: null,
+  token: localStorage.getItem('token') || null // try to get saved token from local storage
 };
 
 export default function (state = initialState, action) {

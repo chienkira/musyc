@@ -30,6 +30,8 @@ class Callback extends React.Component {
       //   state
       if (opener && opener.spotifyApi) opener.spotifyApi.setAccessToken(queryString.access_token);
       if (opener && opener.onAuth) opener.onAuth()
+      // save token to local storage
+      localStorage.setItem('token', queryString.access_token)
     }
     window.close()
   }

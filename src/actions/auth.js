@@ -19,7 +19,7 @@ export function auth() {
       spotifyApi.getMe()
         .then(function (data) {
           dispatch(setMe(data.body))
-          dispatch(actions.switchMenu('yourTracks'))
+          dispatch(actions.switchMenu('myTracks'))
         }, function (err) {
           console.error(err)
         })

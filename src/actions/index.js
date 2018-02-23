@@ -6,6 +6,8 @@ import {nextTrack} from './track'
 import {prevTrack} from './track'
 import {fetchMyTracks} from './track'
 import {onFetchFeaturedPlaylists} from './browse'
+import {onSelectPlaylist} from './browse'
+import {onBackToListOfPlaylist} from './browse'
 import {callRequest, receiveResponse} from './api'
 
 export {
@@ -17,6 +19,8 @@ export {
   prevTrack,
   fetchMyTracks,
   onFetchFeaturedPlaylists,
+  onBackToListOfPlaylist,
+  onSelectPlaylist,
   callRequest,
   receiveResponse
 }

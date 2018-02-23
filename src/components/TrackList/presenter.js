@@ -1,17 +1,14 @@
 import React from 'react';
-import {List, Button, Image} from 'semantic-ui-react';
+import {List, Button, Image, Label} from 'semantic-ui-react';
+import './TrackList.css';
 
 class TrackList extends React.Component {
-
-  componentDidMount() {
-    this.props.onFetchMyTracks()
-  }
 
   render() {
     const {tracks = [], onPlay} = this.props;
     return (
       <div>
-        <List divided animated verticalAlign='middle'>
+        <List animated verticalAlign='top' celled ordered>
           {
             tracks.map((track, key) => {
               return (
@@ -19,12 +16,16 @@ class TrackList extends React.Component {
                   <Image avatar src={track.track.album.images[0].url}/>
 
                   <List.Content>
-                    <List.Header>{track.track.name}</List.Header>
+                    <List.Header className="track-name">{track.track.name}</List.Header>
                     {track.track.artists[0].name}
                   </List.Content>
 
                   <List.Content floated='right'>
-                    <Button circular color="black" icon='play' content='Play' onClick={() => onPlay(track)}
+                    {
+                      !track.track.preview_url ?
+                        <Label basic size="mini" color='red' pointing='right'>Stream not available</Label> : null
+                    }
+                    <Button circular icon='play' content='Play' onClick={() => onPlay(track)}
                             disabled={!track.track.preview_url}/>
                   </List.Content>
                 </List.Item>

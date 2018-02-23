@@ -15,7 +15,9 @@ export function onFetchFeaturedPlaylists() {
     return function (dispatch) {
       //to show loader
       dispatch(actions.callRequest())
-      spotifyApi.getFeaturedPlaylists()
+      spotifyApi.getFeaturedPlaylists({
+        country: 'JP'
+      })
         .then(function(data) {
           dispatch(setFeaturedPlaylists(data.body.playlists.items))
           //to close loader
@@ -30,5 +32,50 @@ export function onFetchFeaturedPlaylists() {
 
   return function (dispatch) {
     dispatch(fetchFeaturedPlaylists(window.spotifyApi))
+  }
+}
+
+export function onSelectPlaylist(activePlaylist) {
+  function fetchTracksOfPlaylist(spotifyApi) {
+
+    return function (dispatch) {
+      //to show loader
+      dispatch(actions.callRequest())
+      spotifyApi.getPlaylistTracks(
+        activePlaylist.owner.id,
+        activePlaylist.id
+        )
+        .then(function(data) {
+          const tracks = data.body.items
+          // set active list of tracks
+          dispatch(actions.setTracks(tracks))
+          // set active playlist
+          dispatch(setActivePlaylist(activePlaylist, tracks))
+          //to close loader
+          dispatch(actions.receiveResponse())
+        }, function(err) {
+          //to close loader
+          dispatch(actions.receiveResponse())
+          console.error(err);
+        });
+    }
+  }
+
+  return function (dispatch) {
+    dispatch(fetchTracksOfPlaylist(window.spotifyApi))
+  }
+}
+
+export function setActivePlaylist(activePlaylist, tracksOfActivePlaylist) {
+  return {
+    type: actionTypes.FEATURED_PLAYLIST_SELECT,
+    activePlaylist,
+    tracksOfActivePlaylist
+  }
+}
+
+export function onBackToListOfPlaylist() {
+  return {
+    type: actionTypes.FEATURED_PLAYLIST_CLEAR_SELECT
   }
 }

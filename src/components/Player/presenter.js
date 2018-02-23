@@ -50,7 +50,10 @@ class Player extends React.Component {
     const {activeTrack, onNextTrack, onPrevTrack} = this.props
 
     const EnhancedPlayer = withCustomAudio(props => {
-      const {track, trackTitle, artistName, trackDuration} = props
+      const {track} = props
+      const trackTitle = track ? track.name : ''
+      const artistName = track ? track.artists[0].name : ''
+      const trackDuration = track ? track.duration_ms : ''
 
       return (
         <div className="player">
@@ -104,9 +107,6 @@ class Player extends React.Component {
         <EnhancedPlayer
           track={activeTrack ? activeTrack.track : null}
           streamUrl={activeTrack ? activeTrack.track.preview_url : 'none'}
-          trackTitle={activeTrack ? activeTrack.track.name : ''}
-          artistName={activeTrack ? activeTrack.track.artists[0].name : ''}
-          trackDuration={activeTrack ? activeTrack.track.duration_ms : ''}
           onStartTrack={this.onStartTrack}
           onStopTrack={this.onStopTrack}
           onPauseTrack={this.onPauseTrack}

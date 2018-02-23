@@ -4,9 +4,10 @@ import * as actions from '../../actions'
 import Menubar from './presenter'
 
 const mapStateToProps = (state) => {
-  const {activeMenu, user} = state.menu
+  const {activeMenu, user, token} = state.menu
   return {
     user,
+    token,
     activeMenu
   }
 }

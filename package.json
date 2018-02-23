@@ -1,11 +1,11 @@
 {
-  "name": "minimal-react-webpack-babel-setup",
+  "name": "Musyc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --config ./webpack.config.js --port 8081",
-    "build": "webpack --progress  --config ./webpack.config.js -p",
+    "build": "webpack --progress -p",
     "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],

@@ -5,6 +5,16 @@ import {Menu, Icon, Dropdown, Button, Flag, Image} from 'semantic-ui-react'
 
 class Menubar extends Component {
 
+  constructor(props) {
+    super(props);
+    const {token, onAuth} = props
+    // if we have token, use it to auto-login
+    if (token) {
+      window.spotifyApi.setAccessToken(token)
+      onAuth()
+    }
+  }
+
   openAuthWindow(onAuth) {
     // 3rd param: set true to force open Spotify auth screen
     let authorizeUrl = window.spotifyApi.createAuthorizeURL(SCOPES, STATE, false)
@@ -57,9 +67,9 @@ class Menubar extends Component {
                    active={activeMenu === "browse"}
                    onClick={(e, {name}) => onSwitchMenu(name)}/>
 
-        <Menu.Item name="yourTracks" icon="music"
+        <Menu.Item name="myTracks" icon="music"
                    disabled={!this.isLoggedIn(user)}
-                   active={activeMenu === "yourTracks"}
+                   active={activeMenu === "myTracks"}
                    onClick={(e, {name}) => onSwitchMenu(name)}/>
 
         <Menu.Item name="library" icon="like"
