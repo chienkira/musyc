@@ -1,0 +1,19 @@
+{
+  "name": "musyc-callback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "watchify main.js -o bundle.js -v",
+    "build": "NODE_ENV=production browserify -g uglifyify main.js -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^16.1.0",
+    "query-string": "^5.1.0",
+    "uglifyify": "^4.0.5",
+    "watchify": "^3.10.0"
+  }
+}

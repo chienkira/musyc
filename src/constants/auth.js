@@ -7,4 +7,4 @@ export const SCOPES = [
   'playlist-read-private',
   'user-read-recently-played',
   'user-read-currently-playing']
-export const STATE = 'state-attemp-musyc-auth'
+export const STATE = 'state-attempt-musyc-auth'

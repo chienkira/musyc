@@ -33,7 +33,7 @@ class Player extends React.Component {
       const timelineWidth = timeline.offsetWidth
       const playPercent = timelineWidth * (soundCloudAudio.audio.currentTime / soundCloudAudio.audio.duration)
       playhead.style.width = playPercent + "px"
-    }, 100);
+    }, 50);
   }
 
   onStopTrack(soundCloudAudio) {
