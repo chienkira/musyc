@@ -2,7 +2,7 @@
 A web application built by react, redux & semantic-ui.
 Base boilerplate: [react-redux-spotify](https://github.com/chienkira/react-redux-spotify)
 <p align="center">
-<img width="200" height="250" src="https://raw.githubusercontent.com/chienkira/musyc/master/screenshoot.png" alt="Musyc Screenshot"/>
+<img width="330" height="420" src="https://raw.githubusercontent.com/chienkira/musyc/master/screenshoot.png" alt="Musyc Screenshot"/>
 </p>
 
 ## Features
