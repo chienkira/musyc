@@ -24,4 +24,4 @@ Base boilerplate: [react-redux-spotify](https://github.com/chienkira/react-redux
 I am open for feedback.
 
 ## Demo
-Live demo: [https://kiradev.me/musyc/dist]
+Live demo: [kiradev.me/musyc/dist](https://kiradev.me/musyc/dist)
