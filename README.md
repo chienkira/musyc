@@ -1,26 +1,27 @@
-# react-redux-spotify
-
-This repository should give you an entry point for a React + Redux + Spotify boilerplate project with multiple possible extensions.
-
-If you only search for a seed project for your React + Redux + Spotify app, here is it!
+# Musyc
+A web application built by react, redux & semantic-ui.
+Base boilerplate: [react-redux-spotify](https://github.com/chienkira/react-redux-spotify)
+<p align="center">
+<img width="200" height="250" src="https://raw.githubusercontent.com/chienkira/musyc/master/screenshoot.png" alt="Musyc Screenshot"/>
+</p>
 
 ## Features
-[Base boilerplate: https://github.com/rwieruch/minimal-react-webpack-babel-setup]
-1. Login with Spotify account
-2. List your track on Spotify
-3. Select one and play it (use browser build-in player)
+* Authorization with Spotify web api
+* List your saved tracks on Spotify
+* Browse Spotify's featured playlist
+* Custom music player
 
 ## Get Started
 
-1. git clone
-3. npm install
-4. npm start
+1. `git clone https://github.com/chienkira/musyc.git`
+2. `cd musyc`
+3. `npm install`
+4. `npm run start` (start development server)
+5. Enjoy at http://localhost:8081
 
 ## Contribute
 
 I am open for feedback.
 
 ## Demo
-![1](https://raw.githubusercontent.com/chienkira/react-redux-spotify/master/demo_images/Screen%20Shot%200030-02-18%20at%200.43.40.png)
-![2](https://raw.githubusercontent.com/chienkira/react-redux-spotify/master/demo_images/Screen%20Shot%200030-02-18%20at%200.43.44.png)
-![3](https://raw.githubusercontent.com/chienkira/react-redux-spotify/master/demo_images/Screen%20Shot%200030-02-18%20at%200.44.06.png)
+Live demo: https://kiradev.me/musyc/dist
