@@ -17,10 +17,8 @@ class App extends Component {
         {/*Top menu bar*/}
         <Menubar/>
 
-        {isFetching ? <Dimmer active inverted><Loader inverted size='large'>Loading</Loader></Dimmer>: null}
-
         {/*Main container*/}
-        <Container className="main-container" style={{marginBottom: '170px'}}>
+        <Container className="main-container" style={{marginBottom: '170px', marginTop: '70px'}}>
           {
             (() => {
               switch (activeMenu) {
@@ -35,6 +33,8 @@ class App extends Component {
               }
             })()
           }
+
+          {isFetching ? <Dimmer active inverted><Loader inverted size='large'>Loading</Loader></Dimmer>: null}
         </Container>
 
         {/*Bottom player*/}

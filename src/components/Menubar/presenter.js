@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {SCOPES, STATE} from '../../constants/auth'
 import Util from '../../constants/util'
-import {Menu, Icon, Dropdown, Button, Flag, Image} from 'semantic-ui-react'
+import {Menu, Icon, Dropdown, Button, Flag, Image, Sticky} from 'semantic-ui-react'
 
 class Menubar extends Component {
 
@@ -56,7 +56,7 @@ class Menubar extends Component {
     const {activeMenu, user, onAuth, onSwitchMenu} = this.props
 
     return (
-      <Menu size='tiny'>
+      <Menu size='tiny' fixed="top">
 
         <Menu.Item header>
           <Icon name="sound" size="big"/> Musyc
