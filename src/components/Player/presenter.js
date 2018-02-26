@@ -108,7 +108,11 @@ class Player extends React.Component {
           track={activeTrack ? activeTrack.track : null}
           streamUrl={activeTrack ? activeTrack.track.preview_url : 'none'}
           onStartTrack={this.onStartTrack}
-          onStopTrack={this.onStopTrack}
+          onStopTrack={(soundCloudAudio) => {
+            this.onStopTrack(soundCloudAudio)
+            // auto play next track
+            onNextTrack(activeTrack)
+          }}
           onPauseTrack={this.onPauseTrack}
           onReady={this.onReady}
           preloadType="metadata" />
