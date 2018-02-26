@@ -44,6 +44,7 @@ export function fetchMyTracks() {
         }, function(err) {
           //to close loader
           dispatch(actions.receiveResponse())
+          dispatch(actions.expiredToken())
           console.error(err);
         });
     }

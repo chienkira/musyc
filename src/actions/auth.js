@@ -21,6 +21,7 @@ export function auth() {
           dispatch(setMe(data.body))
           dispatch(actions.switchMenu('myTracks'))
         }, function (err) {
+          dispatch(actions.expiredToken())
           console.error(err)
         })
     }

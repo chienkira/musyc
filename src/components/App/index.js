@@ -7,11 +7,12 @@ import Browse from '../Browse'
 import MyTracks from '../MyTracks'
 import Player from '../Player'
 import Library from '../Library'
+import ErrorModal from '../ErrorModal'
 
 class App extends Component {
 
   render() {
-    const { activeMenu, isFetching } = this.props
+    const { activeMenu, isFetching, errors } = this.props
     return (
       <div>
         {/*Top menu bar*/}
@@ -35,6 +36,8 @@ class App extends Component {
           }
 
           {isFetching ? <Dimmer active inverted><Loader inverted size='large'>Loading</Loader></Dimmer>: null}
+
+          {(errors.length > 0) ? <ErrorModal errors={errors}/> : null}
         </Container>
 
         {/*Bottom player*/}
@@ -46,10 +49,11 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   const { activeMenu } = state.menu
-  const { isFetching } = state.api
+  const { isFetching, errors } = state.api
   return {
     activeMenu,
-    isFetching
+    isFetching,
+    errors
   }
 }
 

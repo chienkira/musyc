@@ -8,7 +8,7 @@ import {fetchMyTracks} from './track'
 import {onFetchFeaturedPlaylists} from './browse'
 import {onSelectPlaylist} from './browse'
 import {onBackToListOfPlaylist} from './browse'
-import {callRequest, receiveResponse} from './api'
+import {callRequest, receiveResponse, expiredToken, onCloseModalError} from './api'
 
 export {
   auth,
@@ -22,5 +22,7 @@ export {
   onBackToListOfPlaylist,
   onSelectPlaylist,
   callRequest,
-  receiveResponse
+  receiveResponse,
+  expiredToken,
+  onCloseModalError
 }

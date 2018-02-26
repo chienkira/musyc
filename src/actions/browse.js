@@ -25,6 +25,7 @@ export function onFetchFeaturedPlaylists() {
         }, function(err) {
           //to close loader
           dispatch(actions.receiveResponse())
+          dispatch(actions.expiredToken())
           console.error(err);
         });
     }
@@ -56,6 +57,7 @@ export function onSelectPlaylist(activePlaylist) {
         }, function(err) {
           //to close loader
           dispatch(actions.receiveResponse())
+          dispatch(actions.expiredToken())
           console.error(err);
         });
     }
