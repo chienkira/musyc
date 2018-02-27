@@ -27,12 +27,20 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: process.env.NODE_ENV !== 'production' ?
+    [
+      // development env
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }),
+      new webpack.HotModuleReplacementPlugin()
+    ] :
+    [
+      // production env
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      })
+    ],
   devServer: {
     contentBase: './dist',
     hot: (process.env.NODE_ENV !== 'production' ? true : false),
