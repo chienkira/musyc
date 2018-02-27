@@ -106,7 +106,7 @@ class Player extends React.Component {
       <Menu fixed='bottom' size="large" compact={true}>
         <EnhancedPlayer
           track={activeTrack ? activeTrack.track : null}
-          streamUrl={activeTrack ? activeTrack.track.preview_url : 'none'}
+          streamUrl={activeTrack && activeTrack.track.preview_url ? activeTrack.track.preview_url : 'none'}
           onStartTrack={this.onStartTrack}
           onStopTrack={(soundCloudAudio) => {
             this.onStopTrack(soundCloudAudio)
