@@ -44,8 +44,11 @@ export function fetchMyTracks() {
         }, function(err) {
           //to close loader
           dispatch(actions.receiveResponse())
-          dispatch(actions.expiredToken())
-          console.error(err);
+          if (err.statusCode === 401) {
+            dispatch(actions.expiredToken())
+          } else {
+            dispatch(actions.onErrorOccurred(err.message))
+          }
         });
     }
   }

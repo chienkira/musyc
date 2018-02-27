@@ -3,19 +3,30 @@ import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers/index'
 
-const logger = createLogger()
-
-const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
-
 export default function configureStore(initialState) {
-  const store = createStoreWithMiddleware(rootReducer, initialState)
+  const middlewares = [thunk]
 
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers/index');
-      store.replaceReducer(nextRootReducer);
-    });
+  if (process.env.NODE_ENV !== `production`) {
+    const logger = createLogger();
+    middlewares.push(logger);
+  }
+
+  const store = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(
+      ...middlewares
+    )
+  )
+
+  if (process.env.NODE_ENV !== `production`) {
+    if (module.hot) {
+      // Enable Webpack hot module replacement for reducers
+      module.hot.accept('../reducers', () => {
+        const nextRootReducer = require('../reducers/index');
+        store.replaceReducer(nextRootReducer);
+      });
+    }
   }
 
   return store

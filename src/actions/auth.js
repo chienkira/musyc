@@ -21,8 +21,11 @@ export function auth() {
           dispatch(setMe(data.body))
           dispatch(actions.switchMenu('myTracks'))
         }, function (err) {
-          dispatch(actions.expiredToken())
-          console.error(err)
+          if (err.statusCode === 401) {
+            dispatch(actions.expiredToken())
+          } else {
+            dispatch(actions.onErrorOccurred(err.message))
+          }
         })
     }
   }

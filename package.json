@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js --port 8081",
-    "build": "webpack --progress -p",
+    "start": "NODE_ENV='development' webpack-dev-server --progress --colors --config ./webpack.config.js --port 8081",
+    "build": "NODE_ENV='production' webpack --progress -p",
     "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],

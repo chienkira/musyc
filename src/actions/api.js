@@ -11,15 +11,3 @@ export function receiveResponse() {
     type: actionTypes.API_RECEIVE_RESPONSE
   }
 }
-
-export function expiredToken() {
-  return {
-    type: actionTypes.API_TOKEN_EXPIRED
-  }
-}
-
-export function onCloseModalError() {
-  return {
-    type: actionTypes.CLOSE_MODAL_ERROR
-  }
-}

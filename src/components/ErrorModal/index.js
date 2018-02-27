@@ -5,6 +5,8 @@ import * as actions from '../../actions'
 import ErrorModal from './presenter';
 
 const mapStateToProps = (state) => {
+  return {
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

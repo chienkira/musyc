@@ -25,8 +25,11 @@ export function onFetchFeaturedPlaylists() {
         }, function(err) {
           //to close loader
           dispatch(actions.receiveResponse())
-          dispatch(actions.expiredToken())
-          console.error(err);
+          if (err.statusCode === 401) {
+            dispatch(actions.expiredToken())
+          } else {
+            dispatch(actions.onErrorOccurred(err.message))
+          }
         });
     }
   }
@@ -57,8 +60,11 @@ export function onSelectPlaylist(activePlaylist) {
         }, function(err) {
           //to close loader
           dispatch(actions.receiveResponse())
-          dispatch(actions.expiredToken())
-          console.error(err);
+          if (err.statusCode === 401) {
+            dispatch(actions.expiredToken())
+          } else {
+            dispatch(actions.onErrorOccurred(err.message))
+          }
         });
     }
   }

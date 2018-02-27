@@ -28,11 +28,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     contentBase: './dist',
-    hot: true,
+    hot: (process.env.NODE_ENV !== 'production' ? true : false),
     historyApiFallback: true
   }
 };

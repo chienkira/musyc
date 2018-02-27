@@ -35,8 +35,10 @@ class App extends Component {
             })()
           }
 
+          {/*Loader*/}
           {isFetching ? <Dimmer active inverted><Loader inverted size='large'>Loading</Loader></Dimmer>: null}
 
+          {/*Error modal*/}
           {(errors.length > 0) ? <ErrorModal errors={errors}/> : null}
         </Container>
 
@@ -49,7 +51,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   const { activeMenu } = state.menu
-  const { isFetching, errors } = state.api
+  const { isFetching } = state.api
+  const errors = state.errors
   return {
     activeMenu,
     isFetching,
