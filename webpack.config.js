@@ -2,7 +2,6 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:8081',
     'react-hot-loader/patch',
     './src/index.js'
   ],
