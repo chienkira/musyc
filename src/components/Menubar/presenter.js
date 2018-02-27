@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {SCOPES, STATE} from '../../constants/auth'
 import Util from '../../constants/util'
-import {Menu, Icon, Dropdown, Button, Flag, Image, Sticky} from 'semantic-ui-react'
+import {Menu, Icon, Dropdown, Button, Flag, Image, Label} from 'semantic-ui-react'
 
 class Menubar extends Component {
 
@@ -30,7 +30,7 @@ class Menubar extends Component {
     return !!user
   }
 
-  renderUser(user) {
+  renderUser(user, onLogout) {
     const userDropdownTrigger = (
       <span><Icon name="spotify"/>{user.display_name}</span>
     )
@@ -46,6 +46,8 @@ class Menubar extends Component {
             <Dropdown.Item key="profileImage">{user.email} <Icon name="mail"/></Dropdown.Item>
             <Dropdown.Item key="country">Your Country <Flag name={user.country.toLowerCase()} /></Dropdown.Item>
             <Dropdown.Item key="follower">Follower {user.followers.total} <Icon name="trophy"/></Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item key="logout" onClick={onLogout}><Label color='red'><Icon name="sign out"/> Logout</Label></Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </Button>
@@ -53,7 +55,7 @@ class Menubar extends Component {
   }
 
   render() {
-    const {activeMenu, user, onAuth, onSwitchMenu} = this.props
+    const {activeMenu, user, onAuth, onLogout, onSwitchMenu} = this.props
 
     return (
       <Menu size='tiny' fixed="top">
@@ -81,7 +83,7 @@ class Menubar extends Component {
           <Menu.Item name="user" active={false} borderless="true">
             {
               user ?
-                this.renderUser(user)
+                this.renderUser(user, onLogout)
                 :
                 <Button onClick={() => { this.openAuthWindow(onAuth) }} type="button">
                   <Icon name="spotify"/>Login

@@ -12,6 +12,8 @@ export default function (state = initialState, action) {
       return switchMenu(state, action)
     case actionTypes.ME_SET:
       return setMe(state, action)
+    case actionTypes.LOG_OUT:
+      return logout(state, action)
   }
   return state
 }
@@ -24,4 +26,11 @@ function switchMenu(state, action) {
 function setMe(state, action) {
   const { user } = action;
   return { ...state, user };
+}
+
+function logout(state, action) {
+  // reset the store
+  let resetState = initialState
+  resetState.token = null
+  return resetState
 }

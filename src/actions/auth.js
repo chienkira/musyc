@@ -31,3 +31,21 @@ export function auth() {
   }
 
 }
+
+export function logout() {
+
+  function logout() {
+    return {
+      type: actionTypes.LOG_OUT
+    };
+  }
+
+  return function (dispatch) {
+    // re-initial access token
+    window.spotifyApi && window.spotifyApi.resetAccessToken()
+    // remove token from local storage
+    localStorage.removeItem('token')
+
+    dispatch(logout())
+  }
+}

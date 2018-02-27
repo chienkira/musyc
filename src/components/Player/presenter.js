@@ -105,7 +105,6 @@ class Player extends React.Component {
     return (
       <Menu fixed='bottom' size="large" compact={true}>
         <EnhancedPlayer
-          clientId="none"
           track={activeTrack ? activeTrack.track : null}
           streamUrl={activeTrack ? activeTrack.track.preview_url : 'none'}
           onStartTrack={this.onStartTrack}

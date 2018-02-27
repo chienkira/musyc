@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAuth: bindActionCreators(actions.auth, dispatch),
+    onLogout: bindActionCreators(actions.logout, dispatch),
     onSwitchMenu: bindActionCreators(actions.switchMenu, dispatch)
   }
 }

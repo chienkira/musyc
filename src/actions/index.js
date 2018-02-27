@@ -1,4 +1,4 @@
-import {auth} from './auth'
+import {auth, logout} from './auth'
 import {switchMenu} from './menu'
 import {setTracks} from './track'
 import {playTrack} from './track'
@@ -13,6 +13,7 @@ import {onErrorOccurred, expiredToken, onCloseModalError} from './error'
 
 export {
   auth,
+  logout,
   switchMenu,
   setTracks,
   playTrack,
