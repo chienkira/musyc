@@ -24,7 +24,9 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    devtoolModuleFilenameTemplate        : '[absolute-resource-path]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   plugins: process.env.NODE_ENV !== 'production' ?
     [
@@ -44,5 +46,6 @@ module.exports = {
     contentBase: './dist',
     hot: (process.env.NODE_ENV !== 'production' ? true : false),
     historyApiFallback: true
-  }
+  },
+  devtool: 'eval-source-map',
 };

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV='development' webpack-dev-server --progress --colors --config ./webpack.config.js --port 8081",
-    "build": "NODE_ENV='production' webpack --progress -p",
+    "start": "cross-env NODE_ENV='development' webpack-dev-server --progress --colors --config ./webpack.config.js --port 8081",
+    "build": "cross-env NODE_ENV='production' webpack --progress -p",
     "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],
@@ -23,7 +23,9 @@
     "babel-loader": "^7.1.2",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-2": "^6.22.0",
+    "cross-env": "^5.1.3",
     "react-hot-loader": "^3.1.3",
+    "redux-devtools-extension": "^2.13.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.4.1"
   },
