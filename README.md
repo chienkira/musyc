@@ -12,6 +12,10 @@ Base boilerplate: [react-redux-spotify](https://github.com/chienkira/react-redux
 * Browse Spotify's featured playlist
 * Custom music player
 
+If you don't have a spotify account you can use the following credentials:
+> email: spotifyreact@gmail.com
+> password: Example
+
 ## Get Started
 
 1. `git clone https://github.com/chienkira/musyc.git`
