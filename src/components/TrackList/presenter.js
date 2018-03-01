@@ -5,7 +5,7 @@ import './TrackList.css';
 class TrackList extends React.Component {
 
   render() {
-    const {tracks = [], onPlay} = this.props;
+    const {tracks = [], onPlay, onSetTrack} = this.props;
     return (
       <div>
         <List animated verticalAlign='top' celled ordered>
@@ -25,8 +25,12 @@ class TrackList extends React.Component {
                       !track.track.preview_url ?
                         <Label basic size="mini" color='red' pointing='right'>Stream not available</Label> : null
                     }
-                    <Button circular icon='play' content='Play' onClick={() => onPlay(track)}
-                            disabled={!track.track.preview_url}/>
+                    <Button circular icon='play' content='Play' onClick={
+                      () => {
+                        onPlay(track)
+                        onSetTrack(tracks)
+                      }
+                    } disabled={!track.track.preview_url}/>
                   </List.Content>
                 </List.Item>
               )

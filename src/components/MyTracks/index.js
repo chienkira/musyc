@@ -5,9 +5,9 @@ import * as actions from '../../actions'
 import MyTracks from './presenter';
 
 const mapStateToProps = (state) => {
-  const {tracks} = state.track
+  const {myTracks} = state.library
   return {
-    tracks
+    myTracks
   }
 }
 

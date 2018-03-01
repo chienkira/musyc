@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPlay: bindActionCreators(actions.playTrack, dispatch)
+    onPlay: bindActionCreators(actions.playTrack, dispatch),
+    onSetTrack: bindActionCreators(actions.setTracks, dispatch)
   }
 }
 

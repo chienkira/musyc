@@ -51,8 +51,6 @@ export function onSelectPlaylist(activePlaylist) {
         )
         .then(function(data) {
           const tracks = data.body.items
-          // set active list of tracks
-          dispatch(actions.setTracks(tracks))
           // set active playlist
           dispatch(setActivePlaylist(activePlaylist, tracks))
           //to close loader

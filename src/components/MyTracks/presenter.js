@@ -11,12 +11,12 @@ class MyTracks extends React.Component {
   }
 
   render() {
-    const {tracks = []} = this.props;
+    const {myTracks = []} = this.props;
     return (
       <div>
-        {tracks.length > 0 ?
+        {myTracks.length > 0 ?
           (
-            <TrackList tracks={tracks}/>
+            <TrackList tracks={myTracks}/>
           )
           :
           (
