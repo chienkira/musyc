@@ -8,6 +8,8 @@ class MyTracks extends React.Component {
   componentDidMount() {
     ReactDOM.findDOMNode(this).scrollTop = 0
     this.props.onFetchMyTracks()
+    // reset window position
+    window.scrollTo(0, 0)
   }
 
   render() {

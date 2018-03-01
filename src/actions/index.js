@@ -3,7 +3,7 @@ import {setTracks} from './track'
 import {playTrack} from './track'
 import {nextTrack} from './track'
 import {prevTrack} from './track'
-import {fetchMyTracks} from './library'
+import {fetchMyTracks, fetchLibrary} from './library'
 import {onFetchFeaturedPlaylists} from './browse'
 import {onSelectPlaylist} from './browse'
 import {onBackToListOfPlaylist} from './browse'
@@ -19,6 +19,7 @@ export {
   nextTrack,
   prevTrack,
   fetchMyTracks,
+  fetchLibrary,
   onFetchFeaturedPlaylists,
   onBackToListOfPlaylist,
   onSelectPlaylist,

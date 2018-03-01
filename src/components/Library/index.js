@@ -5,12 +5,16 @@ import * as actions from '../../actions'
 import Library from './presenter';
 
 const mapStateToProps = (state) => {
+  const {myPlaylists, myAlbums} = state.library
   return {
+    playlists: myPlaylists,
+    albums: myAlbums
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onFetchLibrary: bindActionCreators(actions.fetchLibrary, dispatch)
   }
 }
 

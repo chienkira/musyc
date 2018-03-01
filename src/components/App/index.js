@@ -11,6 +11,11 @@ import ErrorModal from '../ErrorModal'
 
 class App extends Component {
 
+  componentDidUpdate(prevProps, prevState) {
+    // reset window position after page changed
+    window.scrollTo(0, 0)
+  }
+
   render() {
     const { activeMenu, isFetching, errors } = this.props
     return (

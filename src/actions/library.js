@@ -10,8 +10,8 @@ function setMyTracks(myTracks) {
 
 // async action
 export function fetchMyTracks() {
-  function fetchStream(spotifyApi) {
 
+  function fetchMyTracksData(spotifyApi) {
     return function (dispatch) {
       //to show loader
       dispatch(actions.callRequest())
@@ -33,6 +33,37 @@ export function fetchMyTracks() {
   }
 
   return function (dispatch) {
-    dispatch(fetchStream(window.spotifyApi))
+    dispatch(fetchMyTracksData(window.spotifyApi))
+  }
+}
+
+function setLibraryPlaylists(libraryPlaylists) {
+  return {
+    type: actionTypes.LIBRARY_PLAYLISTS_DATA_SET,
+    libraryPlaylists
+  }
+}
+
+// async action
+export function fetchLibrary() {
+
+  function fetchLibraryData (spotifyApi) {
+    return function (dispatch) {
+      //to show loader
+      dispatch(actions.callRequest())
+      spotifyApi.getUserPlaylists()
+        .then(function (data) {
+          dispatch(setLibraryPlaylists(data.body.items))
+          //to close loader
+          dispatch(actions.receiveResponse())
+        }, function (err) {
+          //to close loader
+          dispatch(actions.receiveResponse())
+        })
+    }
+  }
+
+  return function (dispatch) {
+    dispatch(fetchLibraryData(window.spotifyApi))
   }
 }
