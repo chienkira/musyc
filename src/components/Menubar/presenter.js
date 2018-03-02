@@ -17,7 +17,7 @@ class Menubar extends Component {
 
   openAuthWindow(onAuth) {
     // 3rd param: set true to force open Spotify auth screen
-    let authorizeUrl = window.spotifyApi.createAuthorizeURL(SCOPES, STATE, false)
+    let authorizeUrl = window.spotifyApi.createAuthorizeURL(SCOPES, STATE, true)
     // overwrite the response_type's value to 'token', because we are doing "Implicit Grant Authorization Flows"
     authorizeUrl = authorizeUrl.replace(/response_type=code/gi, 'response_type=token')
 
