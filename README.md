@@ -29,4 +29,4 @@ If you don't have a spotify account you can use the following credentials:
 I am open for feedback.
 
 ## Demo
-Live demo: [kiradev.me/musyc/dist](https://kiradev.me/musyc/dist)
+Live demo: [kiradev.me/musyc/dist](https://chienkira.github.io/musyc/dist)
